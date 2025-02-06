@@ -9,28 +9,27 @@ final int modello = 2;
 
 void setup() {
   size(800, 800);
-  background(#eeeeee);
-  // noLoop();
-  mode = cerchio;
+  background(0);
+   //noLoop();
+  mode = rette;
+  
 }
 
 
 void draw() {
+  println(mode);
   if (mode == rette) {
     rette();
-  } else if (mode == cerchio){
+  } else if (mode == cerchio) {
     cerchio();
-  } else if (mode == modello){
+  } else if (mode == modello) {
     modello();
-  //} else if (mode == GAMEOVER){
-  //  gameover();
   } else {
     println("error: mode = " + mode);
   }
- }
-  
+}
 
-  
+
 
 
 void keyPressed() {

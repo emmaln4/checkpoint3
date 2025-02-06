@@ -5,7 +5,7 @@ color[] coloreArray = {
   #0096c7,
   #0077b6,
   #023e8a,
-  
+
 };
 
 int i = 0;
@@ -29,7 +29,7 @@ void cerchio() {
       i++;
       if (i > 5) i = 0;
       fill(coloreArray[i]);
-      
+
 
       pushMatrix();
       rotate(radians(a));
@@ -40,6 +40,8 @@ void cerchio() {
 }
 
 void cerchioClicks() {
-  if (mouseX > 0 && mouseX < 800 && mouseY > 0 && mouseY < 800)
-    mode = modello;
+  if (mouseX > 400 && mouseX < 800 && mouseY > 0 && mouseY < 800)  mode++;
+  if (mouseX > 0 && mouseX < 400 && mouseY > 0 && mouseY < 800)  mode--;
+  if (mode < 0) mode = 2;
+  if (mode > 2) mode = 0;
 }

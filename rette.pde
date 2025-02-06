@@ -7,7 +7,7 @@ void rette() {
     stroke(random(255), random(255), random(255));
 
     if (frameCount%60==0) {
-      background(#eeeeee);
+      background(0);
     }
 
 
@@ -26,6 +26,8 @@ void rette() {
 }
 
 void retteClicks() {
-  if (mouseX > 0 && mouseX < 800 && mouseY > 0 && mouseY < 800)
-    mode = cerchio;
+  if (mouseX > 400 && mouseX < 800 && mouseY > 0 && mouseY < 800)  mode++;
+  if (mouseX > 0 && mouseX < 400 && mouseY > 0 && mouseY < 800)  mode--;
+  if (mode < 0) mode = 2;
+  if (mode > 2) mode = 0;
 }
