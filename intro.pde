@@ -1,9 +1,12 @@
-void intro(){
-  //gif 
+void intro() {
+
+  tema.play();
+
+  //gif
   image(gif[g], 0, 0, width, height);
   g++;
   if (g == f) g = 0;
-  
+
   //text
   textFont(hacked);
   fill(#220d5f, alpha);

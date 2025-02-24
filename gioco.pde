@@ -16,19 +16,20 @@ color coloreGiusto;
 
 String[] parole = {"pink", "purple", "blue", "orange", "white", "yellow"};
 color[] colori  = {rosa, viola, blu, arancione, bianco, giallo};
-//String[] numeri = {0, 1, 2, 3, 4, 5};
+
+boolean fineGioco = false;
 
 void gioco() {
-  
-  score = 0;
-  if (score >= highscore) highscore = score;
+
+  tema.play();
+
   coloreGiusto = colori[int(random(colori.length))];
 
   //gifs
   image(gif2[g2], 0, 0, width, height);
   g2++;
   if (g2 == f2) g2 = 0;
-  
+
   background(0);
 
   if (gif2[g2] != null) {
@@ -52,25 +53,47 @@ void gioco() {
 
   //text
   textFont(hacked);
-  textSize(m);
+  textSize(n);
   fill(colori[randomColor], 255);
   text(parole[randomWord], width/2, height/2);
-  if (m >= 250) {
+  if (n >= 250) {
     randomColor = int(random(colori.length));
     randomWord  = int(random(parole.length));
-    m = 50;
+    n = 50;
   }
-  m = m + 7;
+  n = n + 7;
 }
 
-void mousePressed() {
-  boolean stessiColori = colori[randomColor] == coloreGiusto;
+void giocoClicks() {
+  boolean stessiColori = randomWord == randomColor;
+
+  println(mouseX < width/2, stessiColori);
 
   if ((stessiColori && mouseX < width/2) || (!stessiColori && mouseX > width/2)) {
+
     score++;
+    if (score >= highscore) highscore = score;
+    cinquantaPercento();
+    //randomColor = int(random(colori.length));
+    //randomWord  = int(random(parole.length));
+    n = 50;
+    punti.rewind();
+    punti.play();
+  } else {
+    mode = FINE;
+    perdo.rewind();
+    perdo.play();
+  }
+}
+
+void cinquantaPercento() {
+  if (random(1) < 0.5) {  
     randomColor = int(random(colori.length));
-    randomWord  = int(random(parole.length));
-    coloreGiusto = colori[int (random(parole.length))];
-    m = 50;
+    randomWord = randomColor;
+  } else { 
+    randomColor = int(random(colori.length));
+    do {
+      randomWord = int(random(colori.length));
+    } while (randomWord == randomColor);
   }
 }
